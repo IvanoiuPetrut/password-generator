@@ -1,0 +1,13 @@
+{
+  "name": "password-generator",
+  "version": "1",
+  "description": "psw-gen",
+  "main": "app.js",
+  "repository": "nu avem",
+  "author": "petrut",
+  "license": "UNLICENSED",
+  "private": false,
+  "dependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}
