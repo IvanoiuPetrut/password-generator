@@ -5,74 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/dist/output.css" rel="stylesheet" />
   </head>
-  <body>
-    <div>
-      <h1>Password generator</h1>
-      <div>
-        <p>P4%word!</p>
-        <button>Coppy</button>
+  <body class="bg-gray-900 text-gray-500">
+    <div class="flex flex-col gap-6 text-2xl w-[48rem] p-4">
+      <h1 class="font-bold text-2xl text-center">Password generator</h1>
+      <div class="flex justify-between py-6 px-8 bg-gray-800">
+        <p class="text-3xl font-bold">P4%word!</p>
+        <button class="text-accent-color">Coppy</button>
       </div>
 
-      <input
-        type="range"
-        name="character-length"
-        id="character-length"
-        min="0"
-        max="50"
-        value="0"
-      />
-
-      <div>
-        <div>
+      <div class="flex flex-col gap-6 bg-gray-800 py-6 px-8">
+        <div class="flex justify-between">
           <p>Character Length</p>
-          <p>0</p>
+          <p class="text-4xl font-bold text-accent-color">0</p>
         </div>
-        <div>
-          <input
-            type="checkbox"
-            id="include-uppercase"
-            name="include-uppercase"
-            value="include-uppercase"
-          />
-          <label for="include-uppercase">Include Uppercase Letters</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            id="include-lowercase"
-            name="include-lowercase"
-            value="include-lowercase"
-          />
-          <label for="include-lowercase">Include Lowercase Letters</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            id="include-numbers"
-            name="include-numbers"
-            value="include-numbers"
-          />
-          <label for="include-numbers">Include Numbers</label>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            id="include-symbols"
-            name="include-symbols"
-            value="include-symbols"
-          />
-          <label for="include-symbols">Include Symbols</label>
-        </div>
-        <div>
-          <p>Strength</p>
+
+        <input
+          class="w-full"
+          type="range"
+          name="character-length"
+          id="character-length"
+          min="0"
+          max="50"
+          value="0"
+        />
+
+        <div class="flex flex-col gap-2">
           <div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <input
+              type="checkbox"
+              id="include-uppercase"
+              name="include-uppercase"
+              value="include-uppercase"
+            />
+            <label for="include-uppercase">Include Uppercase Letters</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="include-lowercase"
+              name="include-lowercase"
+              value="include-lowercase"
+            />
+            <label for="include-lowercase">Include Lowercase Letters</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="include-numbers"
+              name="include-numbers"
+              value="include-numbers"
+            />
+            <label for="include-numbers">Include Numbers</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="include-symbols"
+              name="include-symbols"
+              value="include-symbols"
+            />
+            <label for="include-symbols">Include Symbols</label>
           </div>
         </div>
-        <button>Generate</button>
+        <div class="flex justify-between items-center bg-gray-900 px-8 py-6">
+          <p class="uppercase font-bold text-xl">Strength</p>
+          <div class="flex gap-2">
+            <div class="w-4 h-10 border-4 border-gray-500"></div>
+            <div class="w-4 h-10 border-4 border-gray-500"></div>
+            <div class="w-4 h-10 border-4 border-gray-500"></div>
+            <div class="w-4 h-10 border-4 border-gray-500"></div>
+          </div>
+        </div>
+        <button
+          class="font-bold text-xl uppercase py-6 bg-accent-color text-gray-800"
+        >
+          Generate
+        </button>
       </div>
     </div>
   </body>
