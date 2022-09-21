@@ -6,7 +6,9 @@ module.exports = {
     extend: {
       colors: {
         "accent-color": "#A4FFAF",
+        "accent-color-dark": "#8ae395",
         gray: {
+          400: "#504F57",
           500: "#929199",
           700: "#23222A",
           800: "#18171F",
@@ -14,6 +16,9 @@ module.exports = {
         },
       },
     },
+  },
+  variants: {
+    backgroundColor: ["active"],
   },
   plugins: [],
 };
