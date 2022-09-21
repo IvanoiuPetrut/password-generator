@@ -1,5 +1,9 @@
-const btnGenerate = document.getElementById("btn--generate");
 const inputPassword = document.getElementById("input--password");
+const inputLength = document.getElementById("input--length");
+
+const btnGenerate = document.getElementById("btn--generate");
+
+const labelCharaterLength = document.getElementById("character-length");
 
 let password = "";
 let characterLength = 128;
@@ -15,11 +19,12 @@ btnGenerate.addEventListener("click", () => {
   console.log(password.length);
 });
 
+inputLength.addEventListener("input", (e) => {
+  characterLength = e.target.value;
+  labelCharaterLength.innerText = characterLength;
+});
+
 function generateCharacter() {
-  // 0123456789
-  // !@#$%^&*()_+
-  // ABCDEFGHIJKLMNOPQRSTUVWXYZ
-  // abcdefghijklmnopqrstuvwxyz
   let characters = "";
   if (includeUppercase) {
     characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
