@@ -1,7 +1,8 @@
 const btnGenerate = document.getElementById("btn--generate");
+const inputPassword = document.getElementById("input--password");
 
 let password = "";
-let characterLength = 29;
+let characterLength = 128;
 let includeUppercase = true;
 let includeLowercase = true;
 let includeNumbers = true;
@@ -9,6 +10,7 @@ let includeSymbols = true;
 
 btnGenerate.addEventListener("click", () => {
   generatePassword();
+  inputPassword.value = password;
   console.log(password);
   console.log(password.length);
 });
