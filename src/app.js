@@ -26,6 +26,12 @@ btnCopy.addEventListener("click", async () => {
   await navigator.clipboard.writeText(password);
 });
 
+inputPassword.addEventListener("input", (e) => {
+  password = e.target.value;
+  console.log(password);
+  updatePasswordStrength(password);
+});
+
 inputLength.addEventListener("input", (e) => {
   characterLength = e.target.value;
   labelCharaterLength.innerText = characterLength;
@@ -59,23 +65,24 @@ function checkPasswordStrength(password) {
   let strength = 0;
   if (password.match(/[a-z]+/)) {
     strength += 1;
-    console.log("Lowercase");
   }
   if (password.match(/[A-Z]+/)) {
     strength += 1;
-    console.log("Uppercase");
   }
   if (password.match(/[0-9]+/)) {
     strength += 1;
-    console.log("Numbers");
   }
   if (password.match(/[$@#&!]+/)) {
     strength += 1;
-    console.log("Symbols");
   }
   if (password.length > 12) {
     strength += 1;
-    console.log("Length");
+  }
+  for (let i = 0; i < password.length; i++) {
+    if (password.charAt(i) === password.charAt(i + 1)) {
+      strength -= 1;
+      break;
+    }
   }
   return strength;
 }
