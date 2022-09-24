@@ -2,6 +2,7 @@ const inputPassword = document.getElementById("input--password");
 const inputLength = document.getElementById("input--length");
 
 const btnGenerate = document.getElementById("btn--generate");
+const btnCopy = document.getElementById("btn--copy");
 
 const labelCharaterLength = document.getElementById("character-length");
 
@@ -15,8 +16,10 @@ let includeSymbols = true;
 btnGenerate.addEventListener("click", () => {
   generatePassword();
   inputPassword.value = password;
-  console.log(password);
-  console.log(password.length);
+});
+
+btnCopy.addEventListener("click", async () => {
+  await navigator.clipboard.writeText(password);
 });
 
 inputLength.addEventListener("input", (e) => {
