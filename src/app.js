@@ -1,5 +1,9 @@
 const inputPassword = document.getElementById("input--password");
 const inputLength = document.getElementById("input--length");
+const inputIncludeUppercase = document.getElementById("include-uppercase");
+const inputIncludeLowercase = document.getElementById("include-lowercase");
+const inputIncludeNumbers = document.getElementById("include-numbers");
+const inputIncludeSymbols = document.getElementById("include-symbols");
 
 const btnGenerate = document.getElementById("btn--generate");
 const btnCopy = document.getElementById("btn--copy");
@@ -11,13 +15,15 @@ const passwordStrengtBars = document.querySelectorAll(
 
 let password = "";
 let characterLength = 0;
-let includeUppercase = true;
-let includeLowercase = true;
-let includeNumbers = true;
-let includeSymbols = true;
+let includeUppercase = false;
+let includeLowercase = false;
+let includeNumbers = false;
+let includeSymbols = false;
+let passwordStrengthColor = "bg-red-600";
 
 btnGenerate.addEventListener("click", () => {
-  generatePassword();
+  generatePassword(password, characterLength);
+  console.log(password);
   inputPassword.value = password;
   updatePasswordStrength(password);
 });
@@ -35,6 +41,23 @@ inputPassword.addEventListener("input", (e) => {
 inputLength.addEventListener("input", (e) => {
   characterLength = e.target.value;
   labelCharaterLength.innerText = characterLength;
+  sliderBgColor(inputLength, "#A4FFAF");
+});
+
+inputIncludeUppercase.addEventListener("input", (e) => {
+  includeUppercase = e.target.checked;
+});
+
+inputIncludeLowercase.addEventListener("input", (e) => {
+  includeLowercase = e.target.checked;
+});
+
+inputIncludeNumbers.addEventListener("input", (e) => {
+  includeNumbers = e.target.checked;
+});
+
+inputIncludeSymbols.addEventListener("input", (e) => {
+  includeSymbols = e.target.checked;
 });
 
 function generateCharacter() {
@@ -54,9 +77,9 @@ function generateCharacter() {
   return characters.charAt(Math.floor(Math.random() * characters.length));
 }
 
-function generatePassword() {
+function generatePassword(_password, length) {
   password = "";
-  for (let i = 0; i < characterLength; i++) {
+  for (let i = 0; i < length; i++) {
     password += generateCharacter();
   }
 }
@@ -78,26 +101,54 @@ function checkPasswordStrength(password) {
   if (password.length > 12) {
     strength += 1;
   }
-  for (let i = 0; i < password.length; i++) {
-    if (password.charAt(i) === password.charAt(i + 1)) {
-      strength -= 1;
-      break;
-    }
-  }
   return strength;
+}
+
+function updatePasswordStrengthColor(strength, _passwordStrengthColor) {
+  switch (strength) {
+    case 0:
+      passwordStrengthColor = "bg-red-600";
+      break;
+    case 1:
+      passwordStrengthColor = "bg-red-600";
+      break;
+    case 2:
+      passwordStrengthColor = "bg-yellow-600";
+      break;
+    case 3:
+      passwordStrengthColor = "bg-sky-500";
+      break;
+    case 4:
+      passwordStrengthColor = "bg-sky-500";
+      break;
+    case 5:
+      passwordStrengthColor = "bg-accent-color";
+      break;
+  }
 }
 
 function updatePasswordStrength(password) {
   let strength = checkPasswordStrength(password);
+  updatePasswordStrengthColor(strength, passwordStrengthColor);
+
   passwordStrengtBars.forEach((bar, index) => {
+    bar.classList.remove("bg-red-600");
+    bar.classList.remove("bg-yellow-600");
+    bar.classList.remove("bg-sky-500");
+    bar.classList.remove("bg-accent-color");
     if (index < strength) {
-      bar.classList.add("bg-accent-color");
+      bar.classList.add(passwordStrengthColor);
       bar.classList.add("border-gray-600");
       bar.classList.remove("border-gray-500");
     } else {
       bar.classList.add("border-gray-500");
-      bar.classList.remove("bg-accent-color");
+      bar.classList.remove(passwordStrengthColor);
       bar.classList.remove("border-gray-600");
     }
   });
+}
+
+function sliderBgColor(slider, color) {
+  const valPercent = (slider.value / slider.max) * 100;
+  slider.style.background = `linear-gradient(to right, ${color} ${valPercent}%, #0F0E14 ${valPercent}%)`;
 }
