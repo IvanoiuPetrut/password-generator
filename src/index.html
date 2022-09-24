@@ -27,7 +27,7 @@
         />
         <button
           id="btn--copy"
-          class="text-accent-color transitionfocus:outline-dashed focus:text-green-200 focus:shadow-none focus:outline-dashed focus:outline-accent-color active:text-accent-color-dark"
+          class="text-accent-color transitionn hover:text-green-200 focus:text-green-200 focus:outline-dashed active:text-accent-color-dark"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@
 
         <input
           id="input--length"
-          class="w-full h-3 bg-gray-200 appearance-none cursor-pointer dark:bg-gray-900"
+          class="w-full h-3 bg-gray-200 appearance-none cursor-pointer dark:bg-gray-900 focus:outline-none"
           type="range"
           name="character-length"
           min="0"
@@ -111,22 +111,25 @@
         </div>
         <div class="flex justify-between items-center bg-gray-900 px-8 py-6">
           <p class="uppercase font-bold text-2xl text-gray-400">Strength</p>
-          <div class="flex gap-2">
-            <div
-              class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
-            ></div>
-            <div
-              class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
-            ></div>
-            <div
-              class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
-            ></div>
-            <div
-              class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
-            ></div>
-            <div
-              class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
-            ></div>
+          <div class="flex gap-5 items-center">
+            <p id="password-strength" class="font-bold text-3xl"></p>
+            <div class="flex gap-2">
+              <div
+                class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
+              ></div>
+              <div
+                class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
+              ></div>
+              <div
+                class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
+              ></div>
+              <div
+                class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
+              ></div>
+              <div
+                class="w-4 h-10 border-4 border-gray-500 password-strength-bar"
+              ></div>
+            </div>
           </div>
         </div>
         <button

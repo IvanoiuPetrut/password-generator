@@ -9,6 +9,7 @@ const btnGenerate = document.getElementById("btn--generate");
 const btnCopy = document.getElementById("btn--copy");
 
 const labelCharaterLength = document.getElementById("character-length");
+const labelPasswordStrength = document.getElementById("password-strength");
 const passwordStrengtBars = document.querySelectorAll(
   "div.password-strength-bar"
 );
@@ -19,11 +20,11 @@ let includeUppercase = false;
 let includeLowercase = true;
 let includeNumbers = false;
 let includeSymbols = false;
-let passwordStrengthColor = "bg-red-600";
+let passwordStrengthMeter = "";
+let passwordStrengthColor = "";
 
 btnGenerate.addEventListener("click", () => {
   generatePassword(password, characterLength);
-  console.log(password);
   inputPassword.value = password;
   updatePasswordStrength(password);
 });
@@ -127,9 +128,32 @@ function updatePasswordStrengthColor(strength, _passwordStrengthColor) {
   }
 }
 
+function updatePasswordStrengthText(strength) {
+  switch (strength) {
+    case 0:
+      return "Very Weak";
+
+    case 1:
+      return "Weak";
+
+    case 2:
+      return "Fair";
+
+    case 3:
+      return "Strong";
+
+    case 4:
+      return "Very Strong";
+
+    case 5:
+      return "Excellent";
+  }
+}
+
 function updatePasswordStrength(password) {
   let strength = checkPasswordStrength(password);
   updatePasswordStrengthColor(strength, passwordStrengthColor);
+  labelPasswordStrength.innerText = updatePasswordStrengthText(strength);
 
   passwordStrengtBars.forEach((bar, index) => {
     bar.classList.remove("bg-red-600");
