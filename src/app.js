@@ -22,6 +22,7 @@ let includeNumbers = false;
 let includeSymbols = false;
 let passwordStrengthMeter = "";
 let passwordStrengthColor = "";
+let isCopyPopupVisible = false;
 
 btnGenerate.addEventListener("click", () => {
   generatePassword(password, characterLength);
@@ -31,6 +32,16 @@ btnGenerate.addEventListener("click", () => {
 
 btnCopy.addEventListener("click", async () => {
   await navigator.clipboard.writeText(password);
+  if (!isCopyPopupVisible) {
+    isCopyPopupVisible = !isCopyPopupVisible;
+    btnCopy.classList.remove("after:opacity-0");
+    btnCopy.classList.add("after:scale-100");
+    setTimeout(() => {
+      btnCopy.classList.remove("after:scale-100");
+      btnCopy.classList.add("after:opacity-0");
+      isCopyPopupVisible = !isCopyPopupVisible;
+    }, 1000);
+  }
 });
 
 inputPassword.addEventListener("input", (e) => {
