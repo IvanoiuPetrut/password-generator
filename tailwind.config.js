@@ -3,6 +3,9 @@ module.exports = {
   mode: "jit",
   content: ["./src/**/*.{html,js}"],
   theme: {
+    screens: {
+      sm: { max: "640px" },
+    },
     extend: {
       colors: {
         "accent-color": "#A4FFAF",

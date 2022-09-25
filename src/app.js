@@ -154,6 +154,7 @@ function updatePasswordStrength(password) {
   let strength = checkPasswordStrength(password);
   updatePasswordStrengthColor(strength, passwordStrengthColor);
   labelPasswordStrength.innerText = updatePasswordStrengthText(strength);
+  labelPasswordStrength.classList.remove("hidden");
 
   passwordStrengtBars.forEach((bar, index) => {
     bar.classList.remove("bg-red-600");
