@@ -9,5 +9,14 @@
   "private": false,
   "dependencies": {
     "tailwindcss": "^3.1.8"
+  },
+  "scripts": {
+    "start": "concurrently -k -n css,serve \"npm:dev\" \"serve . -l 3000\"",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "serve": "^14.2.6"
   }
 }
